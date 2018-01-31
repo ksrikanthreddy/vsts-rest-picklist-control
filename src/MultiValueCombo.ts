@@ -110,15 +110,14 @@ export class MultiValueCombo extends BaseMultiValueControl {
     }
 
     protected getValue(): string {
-        var selectedCheckboxes: JQuery = $("input.valueOption:checked", this._checkboxValuesContainer);
-        var selectedValues: string[] = [];
+        // var selectedCheckboxes: JQuery = $("input.valueOption:checked", this._checkboxValuesContainer);
+        // var selectedValues: string[] = [];
 
-        selectedCheckboxes.each((i: number, elem: HTMLElement) => {
-            selectedValues.push($(elem).attr("value"));
-        });
-
-        selectedValues = Utils_Array.uniqueSort(selectedValues, Utils_String.localeIgnoreCaseComparer);
-        return selectedValues.join(";");
+        // selectedCheckboxes.each((i: number, elem: HTMLElement) => {
+        //     selectedValues.push($(elem).attr("value"));
+        // });
+        // selectedValues = Utils_Array.uniqueSort(selectedValues, Utils_String.localeIgnoreCaseComparer);
+        return this._selectedValuesContainer.text();
     }
 
     protected setValue(value: string): void {
@@ -184,7 +183,7 @@ export class MultiValueCombo extends BaseMultiValueControl {
             });
         }
 
-        this._updateSelectAllControlState();
+        // this._updateSelectAllControlState();
 
         this.resize();
     }
@@ -195,14 +194,19 @@ export class MultiValueCombo extends BaseMultiValueControl {
         this._selectedValuesContainer.empty();
         this._showValues(values);
     }
+    private _refreshValue(currentSelectedValue) {
+        this._selectedValuesContainer.empty();
+        var val = [currentSelectedValue];
+        this._showValues(val);
+    }
 
     private _createSelectedValueControl(value: string): JQuery {
         var control = $("<div />");
         if (value) {
             control.text(value);
             control.attr("title", value);
-            control.addClass("selected");
-
+            // control.addClass("selected");
+            this._selectedValuesContainer.empty();
             this._selectedValuesContainer.append(control);
         }
 
@@ -240,7 +244,7 @@ export class MultiValueCombo extends BaseMultiValueControl {
 
     private _createSelectAllControl() {
 
-        let value = "Select All test";
+        let value = "Select All 1";
         let label = this._createValueLabel(value);
         let checkbox = this._createCheckBox(value, label, () => {
 
@@ -258,8 +262,8 @@ export class MultiValueCombo extends BaseMultiValueControl {
 
         this._valueToLabelMap[value] = label;
 
-        container.append(checkbox);
-        container.append(label);
+        // container.append(checkbox);
+        // container.append(label);
 
         this._checkboxValuesContainer.append(container);
 
@@ -298,14 +302,13 @@ export class MultiValueCombo extends BaseMultiValueControl {
         checkbox.attr("value", value);
         checkbox.attr("tabindex", -1);
         checkbox.attr("id", "checkbox" + value);
-
+        checkbox.attr("style", "visibility:hidden");
         checkbox.change((e) => {
 
             if(action){
                 action.call(this);
             }
-
-            this._refreshValues();
+            this._refreshValue($(e.currentTarget).attr("value"));
             this.flush();
         });
 

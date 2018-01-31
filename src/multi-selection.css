@@ -48,7 +48,7 @@ input, label, .container {
 }
 
 input[type=checkbox]:checked + label {
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .container .selectedValuesContainer {
