@@ -41,7 +41,7 @@ export class MultiValueCombo extends BaseMultiValueControl {
                 this._suggestedValues = values.filter((s:string):boolean => {
                     return s.trim()!==''});
                 
-                this._populateCheckBoxes();
+                
                 super.initialize();
             }
         );

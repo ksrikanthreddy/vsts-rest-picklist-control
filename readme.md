@@ -3,8 +3,8 @@ This a fork of the [multi value extension](https://github.com/Microsoft/vsts-ext
 ## To Build
 ```cmd
 npm i -g typescript tslint gulp tfx-cli
-git clone git clone https://github.com/ostreifel/vsts-rest-multivalue.git
-cd vsts-rest-multivalue
+git clone git clone https://github.com/ksrikanthreddy/vsts-rest-picklist-control.git
+cd vsts-rest-picklist-control
 npm i
 npm run package:dev
 ```

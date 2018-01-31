@@ -1,10 +1,10 @@
 {
     "manifestVersion": 1.0,
     "id": "vsts-rest-picklist-control",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "name": "Rest PickList Control",
     "description": "A work item form control which allows selection of a value from rest apis.",
-    "publisher": "srikanthkolli",
+    "publisher": "skolli",
     "icons": {
         "default": "img/logo.png"
     },
@@ -32,7 +32,7 @@
     ],
     "repository": {
         "type": "git",
-        "uri": "https://github.com/ostreifel/vsts-rest-multivalue"
+        "uri": "https://github.com/ksrikanthreddy/vsts-rest-picklist-control"
     },
     "tags": [
         "Work Items",
@@ -62,14 +62,14 @@
     ],
     "contributions": [
 		{
-            "id": "multivalue-form-control",
+            "id": "singlevalue-form-control",
             "type": "ms.vss-work-web.work-item-form-control",
-            "description": "A work item form control which allows selection of multiple values.",
+            "description": "A work item form control which allows selection of a value from rest api.",
             "targets": [
                 "ms.vss-work-web.work-item-form"
             ],
             "properties": {
-                "name": "Rest Multivalue control",
+                "name": "Rest Picklist control",
                 "uri": "dist/index.html",
                 "height": 50,
 				"inputs": [

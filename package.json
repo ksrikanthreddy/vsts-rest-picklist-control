@@ -31,8 +31,8 @@
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   },
-  "name": "multivalue-control-extension",
+  "name": "picklist-control-extension",
   "license": "MIT",
-  "description": "VSTS Work Item Form Multivalue Control Extension",
+  "description": "VSTS Work Item Form single value Control Extension",
   "private": false
 }
